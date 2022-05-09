@@ -3,7 +3,6 @@ package plantillaEmpleados;
 public class JefeSeccion extends Empleado {
 	
 	int categoria = 0;
-	double sueldoBruto = 1750 + (50*categoria);
 	
 	
 	
@@ -39,6 +38,7 @@ public class JefeSeccion extends Empleado {
 		super(nombre, apellidos, dni, antiguedad);
 		this.categoria = categoria;
 		this.setPuesto("Jefe de seccion");
+		this.setSueldoBruto(1750 + (50*categoria));
 		
 		while(this.antiguedad >= 365) {
 			aumentoSueldoBruto();

@@ -1,9 +1,7 @@
 package plantillaEmpleados;
 
 public class MozoAlmacen extends Empleado {
-	
-	double sueldoBruto = 1545.5;
-	
+
 	
 	
 	
@@ -36,6 +34,7 @@ public class MozoAlmacen extends Empleado {
 	public MozoAlmacen(String nombre, String apellidos, String dni, int antiguedad) {
 		super(nombre, apellidos, dni, antiguedad);
 		this.setPuesto("Mozo de almacen");
+		this.setSueldoBruto(1545.5);
 		
 		while(this.antiguedad >= 365) {
 			aumentoSueldoBruto();

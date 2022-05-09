@@ -280,7 +280,38 @@ public class Principal {
 		
 	}
 	
-	public static void avanceTemporal() {
+	public static void castingObjetos() {
+		
+		Scanner scInt = new Scanner(System.in);
+		
+		System.out.println("Cuantos dias deseas avanzar?");
+		int diasAvanzados = scInt.nextInt();
+		
+		for(int i = 0; i < arrayEmpleados.size(); i++) {
+			
+			if(arrayEmpleados.get(i) instanceof MozoAlmacen) {
+				MozoAlmacen arrayTemporal = (MozoAlmacen)arrayEmpleados.get(i);
+				
+				
+				}				
+			else if(arrayEmpleados.get(i) instanceof JefePlanta) {
+				JefePlanta arrayTemporal = (JefePlanta)arrayEmpleados.get(i); pasoTiempo();
+				}
+			else if(arrayEmpleados.get(i) instanceof JefeSeccion) {
+				JefeSeccion arrayTemporal = (JefeSeccion)arrayEmpleados.get(i); pasoTiempo();
+				}
+			else if(arrayEmpleados.get(i) instanceof PersonalAdministracion) {
+				PersonalAdministracion arrayTemporal = (PersonalAdministracion)arrayEmpleados.get(i); pasoTiempo();
+				}
+			else if(arrayEmpleados.get(i) instanceof Directivo) {
+				Directivo arrayTemporal = (Directivo)arrayEmpleados.get(i); pasoTiempo();
+				}
+			
+		}
+		
+	}
+	
+	public static void pasoTiempo() {
 		
 		
 		

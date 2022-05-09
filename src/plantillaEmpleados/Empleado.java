@@ -3,7 +3,7 @@ package plantillaEmpleados;
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class Empleado implements Cobros{
+public abstract class Empleado implements Cobros{
 	
 	String nombre;
 	String apellidos;
@@ -11,17 +11,11 @@ public class Empleado implements Cobros{
 	String puesto;
 	int antiguedad = 0;
 	int antiguedadTotal = 0;
+	double sueldoBruto;
 	
 	
-	public void sueldoNeto() {
-		
-		
-	}
-	public void indemnizacion() {
-		
-		
-		
-	}
+	public abstract void sueldoNeto();
+	public abstract void indemnizacion();
 	
 	public void mostrarInformacion(int i) {
 		
@@ -45,6 +39,12 @@ public class Empleado implements Cobros{
 		return nombre;
 	}
 
+	public double getSueldoBruto() {
+		return sueldoBruto;
+	}
+	public void setSueldoBruto(double sueldoBruto) {
+		this.sueldoBruto = sueldoBruto;
+	}
 	public int getAntiguedadTotal() {
 		return antiguedadTotal;
 	}

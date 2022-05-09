@@ -2,7 +2,6 @@ package plantillaEmpleados;
 
 public class PersonalAdministracion extends Empleado {
 
-	double sueldoBruto = 1635;
 	
 	
 
@@ -34,6 +33,7 @@ public class PersonalAdministracion extends Empleado {
 	public PersonalAdministracion(String nombre, String apellidos, String dni, int antiguedad) {
 		super(nombre, apellidos, dni, antiguedad);
 		this.setPuesto("Personal de administracion");
+		this.setSueldoBruto(1635);
 		
 		while(this.antiguedad >= 365) {
 			aumentoSueldoBruto();

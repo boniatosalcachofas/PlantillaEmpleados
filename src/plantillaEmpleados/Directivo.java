@@ -3,7 +3,6 @@ package plantillaEmpleados;
 public class Directivo extends Empleado {
 
 	int comision = 0;
-	double sueldoBruto = 4500 + comision;
 	boolean consejo;
 	
 	
@@ -38,6 +37,7 @@ public class Directivo extends Empleado {
 		super(nombre, apellidos, dni, antiguedad);
 		this.consejo = consejo;
 		this.setPuesto("Directivo");
+		this.setSueldoBruto(4500 + comision);
 		
 		while(this.antiguedad >= 365) {
 			aumentoSueldoBruto();
