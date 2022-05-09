@@ -10,19 +10,21 @@ public class JefeSeccion extends Empleado {
 	
 	public void sueldoNeto() {
 		int neto = 83;
-		System.out.println("Sueldo neto: " + ((neto/100)*this.sueldoBruto));
+		double sueldoNeto = ((neto/100.0)*this.sueldoBruto);
+		System.out.println("Sueldo neto: " + Math.round(sueldoNeto*100.0)/100.0);
 		
 	}
 	public void indemnizacion() {
 		
-		double diasTrabajados = (double)this.getAntiguedadTotal();
-		double anyosParaAumentar = diasTrabajados/365;
-		System.out.println("Indemnizacion: " + ((2/3)*this.sueldoBruto)*anyosParaAumentar);
+		if((Math.floor((this.getAntiguedadTotal()/365.0)*100.0)/100.0) == 1) {
+			double indemnizacion = (2.0/3.0)*(this.sueldoBruto);
+			System.out.println("Indemnizacion: " + indemnizacion);
+		}
 		
 	}
 	public void aumentoSueldoBruto() {
 		int aumentoS = 7;
-		double anyosParaAumentar = Math.floor((double)this.getAntiguedad()/365);
+		double anyosParaAumentar = Math.floor(this.getAntiguedad()/365.0);
 		double aumentoFinal = (aumentoS*anyosParaAumentar);
 		
 		sueldoBruto = sueldoBruto + (aumentoFinal/100)*sueldoBruto;
@@ -38,7 +40,7 @@ public class JefeSeccion extends Empleado {
 		this.categoria = categoria;
 		this.setPuesto("Jefe de seccion");
 		
-		if(antiguedad >= 365) {
+		while(this.antiguedad >= 365) {
 			aumentoSueldoBruto();
 		}
 	}

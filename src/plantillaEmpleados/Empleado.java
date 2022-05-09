@@ -25,7 +25,7 @@ public class Empleado implements Cobros{
 	
 	public void mostrarInformacion(int i) {
 		
-		System.out.println(i + ".- " + this.puesto.toUpperCase() + ": " + this.nombre + " " + this.apellidos + ", " + this.dni + ". " + this.antiguedadTotal + " dias de antiguedad");
+		System.out.println(i + ".- " + this.puesto.toUpperCase() + ": " + this.nombre + " " + this.apellidos + ", " + this.dni + ". " + (this.antiguedad+this.antiguedadTotal) + " dias de antiguedad");
 		
 	}
 	

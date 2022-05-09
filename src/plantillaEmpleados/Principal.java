@@ -9,7 +9,28 @@ public class Principal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		PersonalAdministracion a = new PersonalAdministracion("juan", "gore", "123", 366);
+		PersonalAdministracion b = new PersonalAdministracion("juan", "gore", "123", 366);
+		MozoAlmacen c = new MozoAlmacen("juan", "gore", "123", 366);
+		MozoAlmacen d = new MozoAlmacen("juan", "gore", "123", 654);
+		JefeSeccion e = new JefeSeccion("juan", "gore", "123", 354,1);
+		JefeSeccion f = new JefeSeccion("juan", "gore", "123", 657,1);
+		JefePlanta g = new JefePlanta("juan", "gore", "123", 432,3);
+		JefePlanta h = new JefePlanta("juan", "gore", "123", 456,2);
+		Directivo i = new Directivo("juan", "gore", "123", 127,false);
+		Directivo j = new Directivo("juan", "gore", "123", 730,true);
+		
+		
+		arrayEmpleados.add(a);
+		arrayEmpleados.add(b);
+		arrayEmpleados.add(c);
+		arrayEmpleados.add(d);
+		arrayEmpleados.add(e);
+		arrayEmpleados.add(f);
+		arrayEmpleados.add(g);
+		arrayEmpleados.add(h);
+		arrayEmpleados.add(i);
+		arrayEmpleados.add(j);
 		
 		while (true) {
 			menuPrincipal();
@@ -19,8 +40,6 @@ public class Principal {
 	
 	public static void menuPrincipal(){
 		
-		PersonalAdministracion jose = new PersonalAdministracion("juan", "gore", "123", 365);
-		arrayEmpleados.add(jose);
 		Scanner scInt = new Scanner(System.in);
 		
 		System.out.println("PLANTILLA DE EMPLEADOS\n\n"
@@ -32,6 +51,7 @@ public class Principal {
 				+ "6.- Mostrar matriz dias trabajador");
 	
 		int eleccion = scInt.nextInt();
+		boolean stockTrabajadores;
 		
 		switch (eleccion) {
 		
@@ -40,18 +60,23 @@ public class Principal {
 			break;
 		case 2:
 			//booleano con el fin de verificar si hay trabajadores o no
-			boolean stockTrabajadores = mostrarTrabajadores();
+			stockTrabajadores = mostrarTrabajadores();
 			if(stockTrabajadores) {
 				eliminarTrabajador();
 			}
 			break;
 		case 3:
 			//booleano con el fin de verificar si hay trabajadores o no
-			boolean stockTrabajadores2 = mostrarTrabajadores();
-			if(stockTrabajadores2) {
+			stockTrabajadores = mostrarTrabajadores();
+			if(stockTrabajadores) {
 				infoExtendida();
 			}
 			break;
+		case 4:
+			listadoPorPuesto();
+			break;
+		case 5:
+			
 		}
 			
 			}
@@ -119,7 +144,7 @@ public class Principal {
 			boolean consejo;
 			//Si es true significa que pertenece al consejo
 			while (true) {
-				System.out.println("ï¿½Esta en el consejo de administracion?" + "\n1.- Si" + "\n2.- No");
+				System.out.println("¿Esta en el consejo de administracion?" + "\n1.- Si" + "\n2.- No");
 				int eleccion = scInt.nextInt();
 				if (eleccion == 1) {
 					consejo = true;
@@ -143,7 +168,7 @@ public class Principal {
 			for (int i = 0; i < arrayEmpleados.size(); i++) {
 
 				arrayEmpleados.get(i).mostrarInformacion(i + 1);
-				System.out.println(arrayEmpleados.size());
+				
 
 			}
 			return true;
@@ -180,15 +205,17 @@ public class Principal {
 		
 		Scanner scInt = new Scanner(System.in);
 
-		System.out.println("Â¿Que trabajador deseas mostrar su informacion?");
+		System.out.println("¿Que trabajador deseas mostrar su informacion?");
 		int eleccion = scInt.nextInt() - 1;
 
 		for (int i = 0; i < arrayEmpleados.size(); i++) {
 
-			if (i == eleccion)
+			if (i == eleccion) {
 				arrayEmpleados.get(i).sueldoNeto();
 				arrayEmpleados.get(i).indemnizacion();
 				break;
+			}
+				
 		}
 		
 	}
@@ -205,42 +232,62 @@ public class Principal {
 		
 		int eleccion = scInt.nextInt();
 		
-		for(int i = 0; i < arrayEmpleados.size(); i++) {
-			int numerador = 1;
-			switch (eleccion) {
-			
-			case 1:
-				if(arrayEmpleados.get(i) instanceof MozoAlmacen) arrayEmpleados.get(i).mostrarInformacion(numerador);
-				arrayEmpleados.get(i).sueldoNeto();
-				numerador++;
-				break;
-			case 2:
-				if(arrayEmpleados.get(i) instanceof JefeSeccion) arrayEmpleados.get(i).mostrarInformacion(numerador);
-				arrayEmpleados.get(i).sueldoNeto();
-				numerador++;
-				break;
-			case 3:
-				if(arrayEmpleados.get(i) instanceof JefePlanta) arrayEmpleados.get(i).mostrarInformacion(numerador);
-				arrayEmpleados.get(i).sueldoNeto();
-				numerador++;
-				break;
-			case 4:
-				if(arrayEmpleados.get(i) instanceof PersonalAdministracion) arrayEmpleados.get(i).mostrarInformacion(numerador);
-				arrayEmpleados.get(i).sueldoNeto();
-				numerador++;
-				break;
-			case 5:
-				if(arrayEmpleados.get(i) instanceof Directivo) arrayEmpleados.get(i).mostrarInformacion(numerador);
-				arrayEmpleados.get(i).sueldoNeto();
-				numerador++;
-				break;
-			}
-			
+		if (arrayEmpleados.size() > 0) {
+			for (int i = 0; i < arrayEmpleados.size(); i++) {
+				int numerador = 1;
+				switch (eleccion) {
+
+				case 1:
+					if (arrayEmpleados.get(i) instanceof MozoAlmacen) {
+						arrayEmpleados.get(i).mostrarInformacion(numerador);
+					arrayEmpleados.get(i).sueldoNeto();
+					numerador++;
+					}
+					break;
+				case 2:
+					if (arrayEmpleados.get(i) instanceof JefeSeccion) {
+						arrayEmpleados.get(i).mostrarInformacion(numerador);
+					arrayEmpleados.get(i).sueldoNeto();
+					numerador++;
+					}
+					break;
+				case 3:
+					if (arrayEmpleados.get(i) instanceof JefePlanta) {
+						arrayEmpleados.get(i).mostrarInformacion(numerador);
+					arrayEmpleados.get(i).sueldoNeto();
+					numerador++;
+					}
+					break;
+				case 4:
+					if (arrayEmpleados.get(i) instanceof PersonalAdministracion) {
+						arrayEmpleados.get(i).mostrarInformacion(numerador);
+					arrayEmpleados.get(i).sueldoNeto();
+					numerador++;
+					}
+					break;
+				case 5:
+					if (arrayEmpleados.get(i) instanceof Directivo) {
+						arrayEmpleados.get(i).mostrarInformacion(numerador);
+					arrayEmpleados.get(i).sueldoNeto();
+					numerador++;
+					}
+					break;
+				}
+
+			} 
 		}
 		
 		
 	}
-	private static void continuarOperaciones() {
+	
+	public static void avanceTemporal() {
+		
+		
+		
+	}
+	
+	
+	public static void continuarOperaciones() {
 		Scanner scLine = new Scanner(System.in);
 		System.out.println("Pulse intro para continuar");
 		scLine.nextLine();
