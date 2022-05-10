@@ -144,7 +144,7 @@ public class Principal {
 			boolean consejo;
 			//Si es true significa que pertenece al consejo
 			while (true) {
-				System.out.println("¿Esta en el consejo de administracion?" + "\n1.- Si" + "\n2.- No");
+				System.out.println("ï¿½Esta en el consejo de administracion?" + "\n1.- Si" + "\n2.- No");
 				int eleccion = scInt.nextInt();
 				if (eleccion == 1) {
 					consejo = true;
@@ -205,14 +205,14 @@ public class Principal {
 		
 		Scanner scInt = new Scanner(System.in);
 
-		System.out.println("¿Que trabajador deseas mostrar su informacion?");
+		System.out.println("ï¿½Que trabajador deseas mostrar su informacion?");
 		int eleccion = scInt.nextInt() - 1;
 
 		for (int i = 0; i < arrayEmpleados.size(); i++) {
 
 			if (i == eleccion) {
 				arrayEmpleados.get(i).sueldoNeto();
-				arrayEmpleados.get(i).indemnizacion();
+				arrayEmpleados.get(i).indemnizacion(arrayEmpleados.get(i));
 				break;
 			}
 				
@@ -280,42 +280,24 @@ public class Principal {
 		
 	}
 	
-	public static void castingObjetos() {
+	public static void avanceTemporal() {
 		
 		Scanner scInt = new Scanner(System.in);
 		
 		System.out.println("Cuantos dias deseas avanzar?");
 		int diasAvanzados = scInt.nextInt();
 		
-		for(int i = 0; i < arrayEmpleados.size(); i++) {
-			
-			if(arrayEmpleados.get(i) instanceof MozoAlmacen) {
-				MozoAlmacen arrayTemporal = (MozoAlmacen)arrayEmpleados.get(i);
-				
-				
-				}				
-			else if(arrayEmpleados.get(i) instanceof JefePlanta) {
-				JefePlanta arrayTemporal = (JefePlanta)arrayEmpleados.get(i); pasoTiempo();
-				}
-			else if(arrayEmpleados.get(i) instanceof JefeSeccion) {
-				JefeSeccion arrayTemporal = (JefeSeccion)arrayEmpleados.get(i); pasoTiempo();
-				}
-			else if(arrayEmpleados.get(i) instanceof PersonalAdministracion) {
-				PersonalAdministracion arrayTemporal = (PersonalAdministracion)arrayEmpleados.get(i); pasoTiempo();
-				}
-			else if(arrayEmpleados.get(i) instanceof Directivo) {
-				Directivo arrayTemporal = (Directivo)arrayEmpleados.get(i); pasoTiempo();
-				}
-			
+		if (arrayEmpleados.size() > 0) {
+			for (int i = 0; i < arrayEmpleados.size(); i++) {
+
+				arrayEmpleados.get(i).pasoTiempo(diasAvanzados);
+
+			} 
 		}
 		
 	}
 	
-	public static void pasoTiempo() {
-		
-		
-		
-	}
+	
 	
 	
 	public static void continuarOperaciones() {
